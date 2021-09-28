@@ -1,0 +1,11 @@
+#pragma kernel GPU_FunctionSample
+
+RWStructuredBuffer<int> intBuffer;
+
+int intValue;
+
+[numthreads(1024,1,1)]
+void GPU_FunctionSample(uint3 groupID : SV_GroupID, uint3 groupThreadID : SV_GroupThreadID)
+{
+    intBuffer[groupThreadID.x] = groupThreadID.x * intValue;
+}
